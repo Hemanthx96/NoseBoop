@@ -1,81 +1,179 @@
-# TinDog Project
+# NoseBoop 🐶❤️
 
-HINT: To fiure out which Bootstrap components/snippets are used. Refer to the PDF below:
-https://github.com/appbrewery/tindog/blob/main/Bootstrap-snippets.pdf
+NoseBoop is a full-stack “dog dating” experience that demonstrates a modern product-style build: App Router-based Next.js frontend, secure Express + MongoDB backend, JWT auth, and Razorpay-powered subscriptions (Plus / Gold / Premium). Use it as a portfolio project, a starting point for your own pet product, or a reference for full-stack TypeScript patterns.
 
-## SVGs:
+- **Live stack:** Next.js 16 · React 18 · Bootstrap 5 · Express · MongoDB · Razorpay
+- **Docs quick links:** [`QUICKSTART.md`](./QUICKSTART.md) · [`server/`](./server) · [`app/`](./app)
 
-Apple Logo:
-<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                class="bi bi-apple mb-1" viewBox="0 0 16 16">
-<path
-                  d="M11.182.008C11.148-.03 9.923.023 8.857 1.18c-1.066 1.156-.902 2.482-.878 2.516.024.034 1.52.087 2.475-1.258.955-1.345.762-2.391.728-2.43Zm3.314 11.733c-.048-.096-2.325-1.234-2.113-3.422.212-2.189 1.675-2.789 1.698-2.854.023-.065-.597-.79-1.254-1.157a3.692 3.692 0 0 0-1.563-.434c-.108-.003-.483-.095-1.254.116-.508.139-1.653.589-1.968.607-.316.018-1.256-.522-2.267-.665-.647-.125-1.333.131-1.824.328-.49.196-1.422.754-2.074 2.237-.652 1.482-.311 3.83-.067 4.56.244.729.625 1.924 1.273 2.796.576.984 1.34 1.667 1.659 1.899.319.232 1.219.386 1.843.067.502-.308 1.408-.485 1.766-.472.357.013 1.061.154 1.782.539.571.197 1.111.115 1.652-.105.541-.221 1.324-1.059 2.238-2.758.347-.79.505-1.217.473-1.282Z" />
-<path
-                  d="M11.182.008C11.148-.03 9.923.023 8.857 1.18c-1.066 1.156-.902 2.482-.878 2.516.024.034 1.52.087 2.475-1.258.955-1.345.762-2.391.728-2.43Zm3.314 11.733c-.048-.096-2.325-1.234-2.113-3.422.212-2.189 1.675-2.789 1.698-2.854.023-.065-.597-.79-1.254-1.157a3.692 3.692 0 0 0-1.563-.434c-.108-.003-.483-.095-1.254.116-.508.139-1.653.589-1.968.607-.316.018-1.256-.522-2.267-.665-.647-.125-1.333.131-1.824.328-.49.196-1.422.754-2.074 2.237-.652 1.482-.311 3.83-.067 4.56.244.729.625 1.924 1.273 2.796.576.984 1.34 1.667 1.659 1.899.319.232 1.219.386 1.843.067.502-.308 1.408-.485 1.766-.472.357.013 1.061.154 1.782.539.571.197 1.111.115 1.652-.105.541-.221 1.324-1.059 2.238-2.758.347-.79.505-1.217.473-1.282Z" />
-</svg>
+---
 
-Google Play Logo:
-<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                class="bi bi-google-play mb-1" viewBox="0 0 16 16">
-<path
-                  d="M14.222 9.374c1.037-.61 1.037-2.137 0-2.748L11.528 5.04 8.32 8l3.207 2.96 2.694-1.586Zm-3.595 2.116L7.583 8.68 1.03 14.73c.201 1.029 1.36 1.61 2.303 1.055l7.294-4.295ZM1 13.396V2.603L6.846 8 1 13.396ZM1.03 1.27l6.553 6.05 3.044-2.81L3.333.215C2.39-.341 1.231.24 1.03 1.27Z" />
-</svg>
+## Highlights
 
-Checkmark:
-<svg xmlns="http://www.w3.org/2000/svg" height="30" fill="currentColor" class="bi bi-check2-circle"
-              viewBox="0 0 16 16">
-<path
-                d="M2.5 8a5.5 5.5 0 0 1 8.25-4.764.5.5 0 0 0 .5-.866A6.5 6.5 0 1 0 14.5 8a.5.5 0 0 0-1 0 5.5 5.5 0 1 1-11 0z" />
-<path
-                d="M15.354 3.354a.5.5 0 0 0-.708-.708L8 9.293 5.354 6.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l7-7z" />
-</svg>
+- App Router Next.js frontend with modular sections (`app/product`, `app/faq`, etc.)
+- Auth-ready backend (JWT + bcrypt) with user, auth, and payment routes
+- Subscription flow wired to Razorpay test keys
+- Shared TypeScript + Axios utilities across the stack
+- Deployable on the free tier trifecta: Vercel (frontend) + Render (API) + MongoDB Atlas
 
-Hat:
-<svg xmlns="http://www.w3.org/2000/svg" height="30" fill="currentColor" class="bi bi-mortarboard" viewBox="0 0 16 16">
-<path d="M8.211 2.047a.5.5 0 0 0-.422 0l-7.5 3.5a.5.5 0 0 0 .025.917l7.5 3a.5.5 0 0 0 .372 0L14 7.14V13a1 1 0 0 0-1 1v2h3v-2a1 1 0 0 0-1-1V6.739l.686-.275a.5.5 0 0 0 .025-.917l-7.5-3.5ZM8 8.46 1.758 5.965 8 3.052l6.242 2.913L8 8.46Z"/>
-<path d="M4.176 9.032a.5.5 0 0 0-.656.327l-.5 1.7a.5.5 0 0 0 .294.605l4.5 1.8a.5.5 0 0 0 .372 0l4.5-1.8a.5.5 0 0 0 .294-.605l-.5-1.7a.5.5 0 0 0-.656-.327L8 10.466 4.176 9.032Zm-.068 1.873.22-.748 3.496 1.311a.5.5 0 0 0 .352 0l3.496-1.311.22.748L8 12.46l-3.892-1.556Z"/>
-</svg>
+---
 
-Heart:
-<svg xmlns="http://www.w3.org/2000/svg" height="30" fill="currentColor" class="bi bi-arrow-through-heart"
-              viewBox="0 0 16 16">
-<path fill-rule="evenodd"
-                d="M2.854 15.854A.5.5 0 0 1 2 15.5V14H.5a.5.5 0 0 1-.354-.854l1.5-1.5A.5.5 0 0 1 2 11.5h1.793l.53-.53c-.771-.802-1.328-1.58-1.704-2.32-.798-1.575-.775-2.996-.213-4.092C3.426 2.565 6.18 1.809 8 3.233c1.25-.98 2.944-.928 4.212-.152L13.292 2 12.147.854A.5.5 0 0 1 12.5 0h3a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-.854.354L14 2.707l-1.006 1.006c.236.248.44.531.6.845.562 1.096.585 2.517-.213 4.092-.793 1.563-2.395 3.288-5.105 5.08L8 13.912l-.276-.182a21.86 21.86 0 0 1-2.685-2.062l-.539.54V14a.5.5 0 0 1-.146.354l-1.5 1.5Zm2.893-4.894A20.419 20.419 0 0 0 8 12.71c2.456-1.666 3.827-3.207 4.489-4.512.679-1.34.607-2.42.215-3.185-.817-1.595-3.087-2.054-4.346-.761L8 4.62l-.358-.368c-1.259-1.293-3.53-.834-4.346.761-.392.766-.464 1.845.215 3.185.323.636.815 1.33 1.519 2.065l1.866-1.867a.5.5 0 1 1 .708.708L5.747 10.96Z" />
-</svg>
+## Tech Stack
 
-## Text:
+| Layer | Tech | Notes |
+| --- | --- | --- |
+| Frontend | Next.js 16, React 18, TypeScript, Bootstrap 5, Axios | App Router, server components, responsive marketing pages |
+| Backend | Node.js 18, Express, TypeScript, MongoDB + Mongoose, JWT, Razorpay | REST API, payment hooks, auth middleware |
+| Tooling | npm, ts-node-dev, dotenv, bcryptjs, cors | Unified TypeScript configs across front/back |
+| Hosting | Vercel, Render, MongoDB Atlas | Works out-of-the-box on free tiers |
 
-Meet new and interesting dogs nearby.
+---
 
-Easy to use.
-So easy to use, even your dog could do it.
+## Monorepo Layout
 
-Elite Clientele.
-We have all the dogs, the greatest dogs.
+```
+NoseBoop-web/
+├── app/                # Next.js App Router pages
+│   ├── layout.tsx      # Root layout + global styles
+│   ├── page.tsx        # Landing page
+│   └── ...             # About, FAQ, Download, etc.
+├── components/         # Reusable React components
+├── css/                # Bootstrap overrides / custom CSS
+├── lib/                # Axios + auth helpers
+├── public/             # Static assets surfaced by Next.js
+├── server/             # Express API (TypeScript)
+│   ├── src/index.ts    # Server entry point
+│   ├── src/routes/     # auth, users, payments
+│   ├── src/models/     # User, Payment schemas
+│   └── src/middleware/ # Auth guard
+├── QUICKSTART.md       # 5-minute setup guide
+└── README.md
+```
 
-Guaranteed to work.
-Find the love of your dog's life or your money back.
+---
 
-"I no longer have to sniff other dogs for love. I've found the hottest Corgi on TinDog. Woof."
-Pebbles, New York
+## Local Development
 
-A Plan for Every Dog's Needs
-Simple and affordable price plans for you and your dog.
+> Need the TL;DR version? Jump to [`QUICKSTART.md`](./QUICKSTART.md).
 
-Chihuahua
-$0/mo
-5 Matches Per Day
-10 Messages Per Day
-Unlimited App Usage
+### 1. Prerequisites
 
-Labrador
-$15/mo
-Unlimited Matches
-Unlimited Messages
-Unlimited App Usage
+- Node.js 18+ and npm 9+
+- MongoDB Atlas account (or any reachable Mongo URI)
+- Razorpay test account + keys
 
-Mastiff
-$29/mo
-Pirority Listing
-Unlimited Matches & Messages
-Unlimited App Usage
+### 2. Install dependencies
+
+```bash
+npm install
+cd server && npm install && cd ..
+```
+
+### 3. Configure environment variables
+
+**Frontend (`.env.local`):**
+```
+NEXT_PUBLIC_API_URL=http://localhost:5000
+NEXT_PUBLIC_RAZORPAY_KEY_ID=rzp_test_xxxxxxxxxxxxx
+```
+
+**Backend (`server/.env`):**
+```
+MONGODB_URI=mongodb+srv://username:password@cluster.mongodb.net/noseboop
+JWT_SECRET=replace_with_32+_char_secret
+RAZORPAY_KEY_ID=rzp_test_xxxxxxxxxxxxx
+RAZORPAY_KEY_SECRET=replace_with_test_secret
+PORT=5000
+NODE_ENV=development
+```
+
+### 4. Run the stack
+
+```bash
+# Terminal 1 - API
+cd server
+npm run dev
+
+# Terminal 2 - Frontend (from repo root)
+npm run dev
+```
+
+- Frontend: http://localhost:3000  
+- Backend: http://localhost:5000  
+- Health: http://localhost:5000/health
+
+### 5. Build for production
+
+```bash
+npm run build && npm start           # Frontend
+cd server && npm run build && npm start
+```
+
+---
+
+## Deployment Cheatsheet
+
+### Frontend (Vercel)
+
+1. Push the repo to GitHub.
+2. Import to Vercel, select `app/` (Next.js) root.
+3. Set env vars (`NEXT_PUBLIC_API_URL`, `NEXT_PUBLIC_RAZORPAY_KEY_ID`).
+4. Deploy – Vercel auto-detects Next.js 16.
+
+### Backend (Render)
+
+1. Create a Web Service pointing to the same repo.
+2. Build command: `cd server && npm install && npm run build`
+3. Start command: `cd server && npm start`
+4. Configure env vars (`MONGODB_URI`, `JWT_SECRET`, `RAZORPAY_*`, `PORT`).
+5. Deploy – copy the Render URL into the frontend API URL.
+
+### Database (MongoDB Atlas)
+
+- Free Shared cluster, Database user, Network access (`0.0.0.0/0` for Render).
+- Paste the SRV string into `MONGODB_URI`.
+
+---
+
+## API Surface (server/src/routes)
+
+| Route | Method | Description | Auth |
+| --- | --- | --- | --- |
+| `/api/auth/register` | POST | Create a new user | ❌ |
+| `/api/auth/login` | POST | Issue JWT | ❌ |
+| `/api/users/me` | GET | Current profile | ✅ |
+| `/api/payments/create-order` | POST | Create Razorpay order | ✅ |
+| `/api/payments/verify` | POST | Verify signature + persist Payment | ✅ |
+
+Token auth uses the `Authorization: Bearer <jwt>` header issued on login.
+
+---
+
+## Features & Roadmap
+
+- ✅ Marketing site (About, FAQ, Stories, Support, Safety, etc.)
+- ✅ Auth + payments wiring
+- ✅ Subscription tiers with Razorpay checkout modal
+- ✅ Responsive design built on Bootstrap 5
+- 🟡 Future ideas: profile management, match algorithm, in-app chat (see [`QUICKSTART.md`](./QUICKSTART.md#-next-steps))
+
+---
+
+## Security Notes
+
+- Passwords hashed with `bcryptjs`
+- JWTs signed with `JWT_SECRET`
+- Razorpay signature verification before persisting payments
+- Environment variables for secrets — never commit `.env*`
+- CORS configured for the frontend origin (adjust in `server/src/index.ts`)
+
+---
+
+## License
+
+This project is provided for portfolio and learning purposes. Feel free to fork, adapt, and showcase — attribution appreciated!
+
+---
+
+## Author
+
+Crafted with love for dogs and developer demos 🐕‍🦺. Contributions and suggestions are welcome via issues or pull requests.
